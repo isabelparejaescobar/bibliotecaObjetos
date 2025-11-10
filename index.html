@@ -1,105 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
-    />
-    <meta charset="UTF-8" />
-    <link
-      href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Biblioteca</title>
-  </head>
-  <body>
-    <header>
 
-    </header>
-    <div class="main">
-      <div class="container" style="max-width: 700px; margin-top: 40px">
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" />
+  <meta charset="UTF-8" />
+  <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+  <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biblioteca</title>
+</head>
 
-        <div class="box">
-          <h2 class="title is-4 has-text-centered">Alta de Usuario</h2>
+<body>
+  <header>
 
-          <div class="field">
-            <label class="label">Nombre del Usuario</label>
-            <div class="control">
-              <input
-                class="input is-primary"
-                id="alta"
-                type="text"
-                placeholder="Escribe el nombre del usuario"
-              />
-            </div>
-          </div>
+  </header>
+  <div class="main">
+    <div class="container" style="max-width: 700px; margin-top: 40px">
 
-          <div class="field is-grouped">
-            <p class="control">
-              <button class="button is-info is-rounded" onclick="añadir()">
-                <span>Alta</span>
-              </button>
-            </p>
+      <div class="box">
+        <h2 class="title is-4 has-text-centered">Alta de Usuario</h2>
+
+        <div class="field">
+          <label class="label">Nombre del Usuario</label>
+          <div class="control">
+            <input class="input is-primary" id="alta" type="text" placeholder="Escribe el nombre del usuario" />
           </div>
         </div>
 
-        <div id="tablaUsuarios" style="margin-top: 20px"></div>
-      </div>
-
-      <div class="container" style="max-width: 700px; margin-top: 40px">
-
-        <div class="box">
-          <h2 class="title is-4 has-text-centered">Alta materiales</h2>
-
-          <div class="field">
-            <label class="label">Titulo</label>
-            <div class="control">
-              <input
-                class="input is-primary"
-                id="titulo"
-                type="text"
-                placeholder="Titulo del libro"
-              />
-            </div>
-
-             <label class="label">Autor</label>
-            <div class="control">
-              <input
-                class="input is-primary"
-                id="autor"
-                type="text"
-                placeholder="Nombre autor"
-              />
-            </div>
-
-             <label class="label">Año</label>
-            <div class="control">
-              <input
-                class="input is-primary"
-                id="anio"
-                type="text"
-                placeholder="Año salida"
-              />
-            </div>
-          </div>
-
-          <div class="field is-grouped">
-            <p class="control">
-              <button class="button is-info is-rounded" onclick="añadir()">
-                <span>Alta</span>
-              </button>
-            </p>
-          </div>
+        <div class="field is-grouped">
+          <p class="control">
+            <button class="button is-info is-rounded" onclick="añadir()">
+              <span>Alta</span>
+            </button>
+          </p>
         </div>
-
-        <div id="tablaUsuarios" style="margin-top: 20px"></div>
       </div>
+
+      <div id="tablaUsuarios" style="margin-top: 20px"></div>
     </div>
 
-    <footer></footer>
+    <div class="container" style="max-width: 700px; margin-top: 40px">
 
-    <script src="script.js"></script>
-  </body>
+      <div class="box">
+        <h2 class="title is-4 has-text-centered">Alta materiales</h2>
+
+        <div class="field">
+          <label class="label">Titulo</label>
+          <div class="control">
+            <input class="input is-primary" id="titulo" type="text" placeholder="Titulo del libro" />
+          </div>
+
+          <label class="label">Autor</label>
+          <div class="control">
+            <input class="input is-primary" id="autor" type="text" placeholder="Nombre autor" />
+          </div>
+
+          <label class="label">Año</label>
+          <div class="control">
+            <input class="input is-primary" id="anio" type="text" placeholder="Año salida" />
+          </div>
+
+          <label class="label">Tipo de Material</label>
+          <div class="control">
+            <div class="select is-primary">
+              <select id="tipoMaterial">
+                <option value="Libro">Libro</option>
+                <option value="Revista">Revista</option>
+                <option value="VideoEducativo">Video Educativo</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div id="camposEspecificos"></div>
+
+        <div class="field is-grouped">
+          <p class="control">
+            <button class="button is-info is-rounded" onclick="añadirMateriales()">
+              <span>Alta</span>
+            </button>
+          </p>
+        </div>
+      </div>
+      <div id="tablaMateriales" style="margin-top: 20px"></div>
+
+    </div>
+
+  </div>
+
+  <footer></footer>
+
+  <script src="script.js"></script>
+</body>
+
 </html>

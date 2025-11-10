@@ -18,7 +18,7 @@
     <div class="container" style="max-width: 700px; margin-top: 40px">
 
       <div class="box">
-        <h2 class="title is-4 has-text-centered">Alta de Usuario</h2>
+        <h2 class="title is-4 has-text-centered">Alta de usuario</h2>
 
         <div class="field">
           <label class="label">Nombre del Usuario</label>
@@ -57,7 +57,7 @@
 
           <label class="label">Año</label>
           <div class="control">
-            <input class="input is-primary" id="anio" type="text" placeholder="Año salida" />
+            <input class="input is-primary" id="anio" type="date" placeholder="Año salida" />
           </div>
 
           <label class="label">Tipo de Material</label>
@@ -85,6 +85,52 @@
       <div id="tablaMateriales" style="margin-top: 20px"></div>
 
     </div>
+
+    <div class="container" style="max-width: 700px; margin-top: 40px">
+
+      <div class="box">
+        <h2 class="title is-4 has-text-centered">Gestionar préstamos</h2>
+
+        <div class="field">
+          <label class="label">Usuario</label>
+          <div class="control">
+            <input class="input is-primary" id="titulo" type="text" placeholder="Titulo del libro" />
+          </div>
+
+          <label class="label">Titulo</label>
+          <div class="control">
+            <input class="input is-primary" id="autor" type="text" placeholder="Nombre autor" />
+          </div>
+
+          <label class="label">Fecha</label>
+          <div class="control">
+            <input class="input is-primary" id="anio" type="date" placeholder="Año salida" />
+          </div>
+
+          <label class="label">Tipo de Material</label>
+          <div class="control">
+            <div class="select is-primary">
+              <select id="tipoMaterial2">
+                <option value="Libro">Libro</option>
+                <option value="Revista">Revista</option>
+                <option value="VideoEducativo">Video Educativo</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <p class="control">
+            <button class="button is-info is-rounded" onclick="añadirMateriales()">
+              <span>Alta</span>
+            </button>
+          </p>
+        </div>
+      </div>
+      <div id="tablaMateriales" style="margin-top: 20px"></div>
+
+    </div>
+
 
   </div>
 

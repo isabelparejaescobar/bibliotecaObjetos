@@ -163,7 +163,7 @@ class Biblioteca {
   inicializarTablaMateriales(divId) {
     const tablaDiv = document.getElementById(divId);
     this.gridMateriales = new gridjs.Grid({
-      columns: ["Titulo", "Autor", "Año", "Tipo Material", "Disponibilidad"],
+      columns: ["Titulo", "Autor", "Año", "Tipo Material"],
       data: [],
       pagination: { enabled: true, limit: 5 },
       search: true,

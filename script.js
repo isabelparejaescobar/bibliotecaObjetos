@@ -111,9 +111,10 @@ class Biblioteca {
   constructor() {
     this.usuarios = [];
     this.materiales = [];
+    this.gestion = [];
     this.grid = null;
     this.gridMateriales = null;
-
+    this.gridGestion = null;
 
   }
 
@@ -194,7 +195,7 @@ class Biblioteca {
         const numeroPaginas = document.getElementById("numeroPaginas")?.value;
         if (!numeroPaginas) { alert("Debes indicar el número de páginas"); return; }
         material = new Libro(titulo, autor, anio, true, parseInt(numeroPaginas));
-      } else if (tipoMaterial=== "Revista") {
+      } else if (tipoMaterial === "Revista") {
         const numeroEdicion = document.getElementById("numeroEdicion")?.value;
         if (!numeroEdicion) { alert("Debes indicar el número de edición"); return; }
         material = new Revista(titulo, autor, anio, true, parseInt(numeroEdicion));
@@ -232,28 +233,122 @@ class Biblioteca {
 
   }
 
+  inicializarTablaGestion(divId) {
+    const tablaDiv = document.getElementById(divId);
+    this.gridGestion = new gridjs.Grid({
+      columns: ["Usuario", "Titulo", "Fecha"],
+      data: [],
+      pagination: { enabled: true, limit: 5 },
+      search: true,
+      sort: true,
+      language: {
+        search: { placeholder: "Buscar..." },
+        pagination: {
+          previous: "Anterior",
+          next: "Siguiente",
+          showing: "Mostrando",
+          results: () => "registros"
+        }
+      }
+    }).render(tablaDiv);
+  }
+
+  añadirGestiones() {
+    const usuarioSelect = document.getElementById("usuarioGestion");
+    const materialSelect = document.getElementById("materialGestion");
+    const fechaInput = document.getElementById("fecha");
+
+    const nombreUsuario = usuarioSelect.value;
+    const tituloMaterial = materialSelect.value;
+    const fechaValor = fechaInput.value;
+
+    if (!nombreUsuario || !tituloMaterial || !fechaValor) {
+      alert("Tienes que rellenar todos los datos.");
+    } else {
+
+      const gestion = {
+        usuario: nombreUsuario,
+        material: tituloMaterial,
+        fecha: fechaValor
+      };
+      this.gestion.push(gestion);
+
+      if (this.gridGestion) {
+        this.gridGestion.updateConfig({
+          data: this.gestion.map(g => [g.usuario, g.material, g.fecha])
+        }).forceRender();
+      }
+
+      fechaInput.value = "";
+
+      const materialObj = this.materiales.find(m => m.titulo === tituloMaterial);
+      if (materialObj) materialObj.disponible = false;
+
+      actualizarSelectMateriales();
+    }
+
+
+
+
+  }
+
 }
+
+
+
 
 
 const miBiblioteca = new Biblioteca();
 
+function actualizarSelectUsuarios() {
+  const select = document.getElementById("usuarioGestion");
+  select.innerHTML = "";
+  miBiblioteca.usuarios.forEach(u => {
+    const option = document.createElement("option");
+    option.value = u.nombre;
+    option.textContent = u.nombre;
+    select.appendChild(option);
+  });
+}
+
+function actualizarSelectMateriales() {
+  const select = document.getElementById("materialGestion");
+  select.innerHTML = "";
+  miBiblioteca.materiales.forEach(m => {
+    if (m.disponible) {
+      const option = document.createElement("option");
+      option.value = m.titulo;
+      option.textContent = m.titulo;
+      select.appendChild(option);
+    }
+  });
+}
+
 miBiblioteca.inicializarTabla("tablaUsuarios");
 miBiblioteca.inicializarTablaMateriales("tablaMateriales");
+miBiblioteca.inicializarTablaGestion("tablaGestion");
 
 
 function añadir() {
   miBiblioteca.añadir();
+  actualizarSelectUsuarios();
 }
 
 function añadirMateriales() {
   miBiblioteca.añadirMateriales();
+  actualizarSelectMateriales();
 }
+
+function añadirGestion() {
+  miBiblioteca.añadirGestiones();
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const tipoSelect = document.getElementById("tipoMaterial");
   const camposEspecificos = document.getElementById("camposEspecificos");
 
-  tipoSelect.addEventListener("change", function() {
+  tipoSelect.addEventListener("change", function () {
     let html = "";
     if (this.value === "Libro") {
       html = `<label class="label">Número de Páginas</label>

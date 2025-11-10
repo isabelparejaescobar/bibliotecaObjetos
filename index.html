@@ -92,51 +92,47 @@
         <h2 class="title is-4 has-text-centered">Gestionar préstamos</h2>
 
         <div class="field">
-          <label class="label">Usuario</label>
-          <div class="control">
-            <input class="input is-primary" id="usuarioGestion" type="text" placeholder="Titulo del libro" />
-          </div>
+          <div class="field">
+            <label class="label">Usuario</label>
+            <div class="control">
+              <div class="select is-primary">
+                <select id="usuarioGestion">
+                </select>
+              </div>
+            </div>
 
-          <label class="label">Titulo</label>
-          <div class="control">
-            <input class="input is-primary" id="tituloGestion" type="text" placeholder="Nombre autor" />
-          </div>
+            <label class="label">Material</label>
+            <div class="control">
+              <div class="select is-primary">
+                <select id="materialGestion">
+                </select>
+              </div>
+            </div>
 
-          <label class="label">Fecha</label>
-          <div class="control">
-            <input class="input is-primary" id="fecha" type="date" placeholder="Año salida" />
-          </div>
+            <label class="label">Fecha</label>
+            <div class="control">
+              <input class="input is-primary" id="fecha" type="date" />
+            </div>
 
-          <label class="label">Tipo de Material</label>
-          <div class="control">
-            <div class="select is-primary">
-              <select id="tipoMaterial2">
-                <option value="Libro">Libro</option>
-                <option value="Revista">Revista</option>
-                <option value="VideoEducativo">Video Educativo</option>
-              </select>
+
+            <div class="field is-grouped">
+              <p class="control">
+                <button class="button is-info is-rounded mt-3" onclick="añadirGestion()">
+                  <span>Alta</span>
+                </button>
+              </p>
             </div>
           </div>
+          <div id="tablaGestion" style="margin-top: 20px"></div>
+
         </div>
 
-        <div class="field is-grouped">
-          <p class="control">
-            <button class="button is-info is-rounded" onclick="añadirMateriales()">
-              <span>Alta</span>
-            </button>
-          </p>
-        </div>
+
       </div>
-      <div id="tablaMateriales" style="margin-top: 20px"></div>
 
-    </div>
+      <footer></footer>
 
-
-  </div>
-
-  <footer></footer>
-
-  <script src="script.js"></script>
+      <script src="script.js"></script>
 </body>
 
 </html>
